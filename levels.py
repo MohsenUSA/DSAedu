@@ -3,6 +3,10 @@ import random
 import time
 from abc import ABC, abstractmethod
 
+# Constants
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
+
 # Colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -102,12 +106,16 @@ class ArrayLevel(BaseLevel):
     """Level 1: Array Basics - Find elements in array"""
     def __init__(self):
         super().__init__(60)  # 60 seconds
-        self.array = [random.randint(1, 50) for _ in range(10)]
+        self.array = self.generate_unique_array()
         self.target = random.choice(self.array)
         self.selected_index = 0
         self.attempts = 0
         self.max_attempts = 3
         self.generate_new_target()
+    
+    def generate_unique_array(self):
+        """Generate array with unique numbers"""
+        return random.sample(range(1, 51), 10)  # 10 unique numbers from 1-50
     
     def generate_new_target(self):
         self.target = random.choice(self.array)
@@ -251,10 +259,14 @@ class StackLevel(BaseLevel):
     def __init__(self):
         super().__init__(45)  # 45 seconds
         self.stack = []
-        self.target_sequence = [random.randint(1, 9) for _ in range(5)]
+        self.target_sequence = self.generate_unique_sequence()
         self.current_target_index = 0
         self.operations = []
         self.sequence_matches = []  # Track which targets have been matched
+    
+    def generate_unique_sequence(self):
+        """Generate sequence with unique numbers"""
+        return random.sample(range(1, 10), 5)  # 5 unique numbers from 1-9
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
@@ -523,17 +535,21 @@ class QueueLevel(BaseLevel):
             pygame.draw.line(screen, (20, 40, 20), (x_offset, y), (x_offset + 50, y), 1)
         
         # Enhanced instructions
-        inst_rect = pygame.Rect(40, 110, 944, 80)
+        inst_rect = pygame.Rect(40, 110, 944, 100)
         pygame.draw.rect(screen, (0, 40, 40), inst_rect)
         pygame.draw.rect(screen, CYAN, inst_rect, 2)
         
-        inst_text = f"Process {self.target_processed} customers using FIFO (First In, First Out)!"
+        inst_text = f"🎯 GOAL: Process {self.target_processed} customers using FIFO (First In, First Out) order!"
         inst_surface = self.font_medium.render(inst_text, True, WHITE)
         screen.blit(inst_surface, (60, 130))
         
-        inst_text2 = "Press A to add customer, SPACE to process next customer"
-        inst_surface2 = self.font_medium.render(inst_text2, True, YELLOW)
+        inst_text2 = "📋 CONTROLS: Press 'A' to ADD customer to queue | Press 'SPACE' to PROCESS next customer"
+        inst_surface2 = self.font_small.render(inst_text2, True, YELLOW)
         screen.blit(inst_surface2, (60, 155))
+        
+        inst_text3 = "💡 TIP: Customers are processed in the order they arrive (first come, first served)"
+        inst_surface3 = self.font_small.render(inst_text3, True, CYAN)
+        screen.blit(inst_surface3, (60, 175))
         
         # Queue visualization with 3D effect
         queue_y = 250
@@ -570,8 +586,8 @@ class QueueLevel(BaseLevel):
                 bg_color = (0, 100, 0)
                 border_color = GREEN
                 # Pulsing effect
-                pulse = int(20 + 30 * pygame.math.Vector2(1, 0).rotate(current_time / 200).x)
-                bg_color = (pulse, 100 + pulse, pulse)
+                pulse = int(20 + 30 * abs(pygame.math.Vector2(1, 0).rotate(current_time / 200).x))
+                bg_color = (max(0, pulse), max(100, 100 + pulse), max(0, pulse))
             else:
                 bg_color = (0, 50, 100)
                 border_color = BLUE
@@ -651,7 +667,7 @@ class BinarySearchLevel(BaseLevel):
     """Level 4: Binary Search - Find target efficiently"""
     def __init__(self):
         super().__init__(30)  # 30 seconds
-        self.array = sorted([random.randint(1, 100) for _ in range(15)])
+        self.array = sorted(random.sample(range(1, 101), 15))  # 15 unique numbers from 1-100
         self.target = random.choice(self.array)
         self.left = 0
         self.right = len(self.array) - 1
@@ -725,13 +741,21 @@ class BinarySearchLevel(BaseLevel):
                 pygame.draw.circle(screen, color, (x, y), 3)
         
         # Enhanced instructions
-        inst_rect = pygame.Rect(40, 110, 944, 80)
+        inst_rect = pygame.Rect(40, 110, 944, 100)
         pygame.draw.rect(screen, (50, 25, 0), inst_rect)
         pygame.draw.rect(screen, ORANGE, inst_rect, 2)
         
-        inst_text = f"Find {self.target} using binary search! Divide and conquer!"
+        inst_text = f"🎯 GOAL: Find {self.target} using binary search! Divide and conquer!"
         inst_surface = self.font_medium.render(inst_text, True, WHITE)
         screen.blit(inst_surface, (60, 130))
+        
+        inst_text2 = "📋 CONTROLS: LEFT ARROW = target is smaller | RIGHT ARROW = target is larger | SPACE = found it!"
+        inst_surface2 = self.font_small.render(inst_text2, True, YELLOW)
+        screen.blit(inst_surface2, (60, 155))
+        
+        inst_text3 = f"💡 TIP: Compare {self.target} with middle element ({self.array[self.mid]}) and eliminate half the array"
+        inst_surface3 = self.font_small.render(inst_text3, True, CYAN)
+        screen.blit(inst_surface3, (60, 180))
         
         inst_text2 = "LEFT: target smaller | RIGHT: target larger | SPACE: found it!"
         inst_surface2 = self.font_medium.render(inst_text2, True, YELLOW)
