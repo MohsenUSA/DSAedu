@@ -11,46 +11,34 @@ A retro-style educational game built with PyGame to help users learn Data Struct
 
 A retro-style educational game built with PyGame to help users learn Data Structures and Algorithms through interactive gameplay.
 
-## 🎬 **Game Demo**
+## 🎬 **Game Demo Video**
 
-### 📹 **Visual Preview**
-![DSA Learning Adventure Demo](demo-preview.png)
+![DSA Learning Adventure Gameplay](gameplay-demo.gif)
 
-*Interactive preview showing the 4 DSA learning levels*
+> **🎮 Live animated gameplay showing all 4 DSA levels in action!**
+> 
+> *30-second preview of actual gameplay footage*
 
-### 🎥 **Full Video Demonstration**
+### 📹 **Full HD Video Demo**
+**[📥 Download Complete Demo (81MB)](ScreenRecording2025-06-26.mov)** - Full quality video with audio
 
-**📹 Complete Gameplay Video (81MB)**: `ScreenRecording2025-06-26.mov`
+### 📹 **What You'll See:**
+- **🏠 Main Menu**: Retro interface with high scores and Amazon Q attribution
+- **🎯 Level Selection**: Interactive DSA challenge selection
+- **🔢 Array Level**: Visual linear search demonstration
+- **📚 Stack Level**: LIFO operations and sequence building
+- **🚶 Queue Level**: FIFO customer processing simulation  
+- **🔍 Binary Search**: Divide-and-conquer algorithm visualization
+- **🏆 Scoring System**: Points, bonuses, and persistent high scores
+- **🎨 Visual Effects**: Retro styling and smooth animations
 
-**How to Watch the Demo:**
+### 🎮 **Experience Options:**
+1. **👆 Watch Above**: Animated preview (1.4MB) loads instantly
+2. **📥 Download Full Video**: Click link above for complete HD demo
+3. **🎮 Play Interactive**: Run `./run_game.sh` to play yourself
+4. **🌐 GitHub Releases**: Professional presentation with release notes
 
-1. **📥 Download Method** (Recommended):
-   - Clone this repository: `git clone https://github.com/YOUR_USERNAME/DSAedu.git`
-   - Navigate to folder and open: `ScreenRecording2025-06-26.mov`
-   - Full quality video with all features demonstrated
-
-2. **🌐 GitHub Releases** (After repository setup):
-   - Visit: [Releases Page](../../releases/latest)
-   - Download the demo video from release assets
-   - Professional presentation with release notes
-
-3. **🎮 Play the Game Yourself**:
-   ```bash
-   ./run_game.sh
-   # Experience all features interactively!
-   ```
-
-### 🎯 **What the Demo Shows:**
-- 🏠 **Main Menu**: Retro interface with high scores preview and Amazon Q attribution
-- 🎲 **Level Selection**: 4 interactive DSA challenges with difficulty indicators
-- 🔢 **Array Level (60s)**: Linear search with visual array navigation
-- 📚 **Stack Level (45s)**: LIFO operations and sequence building mechanics
-- 🚶 **Queue Level (45s)**: FIFO customer processing simulation
-- 🔍 **Binary Search Level (30s)**: Efficient divide-and-conquer algorithm
-- 🏆 **Scoring System**: Points, time bonuses, and persistent high scores
-- 🎨 **Visual Effects**: Retro styling, animations, and educational feedback
-
-> **💡 Pro Tip**: The best way to experience the game is to play it yourself! The demo video shows the features, but the interactive learning experience is what makes it special.
+---
 
 ## 🎮 Recent Updates & Fixes
 
