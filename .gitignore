@@ -48,10 +48,14 @@ Thumbs.db
 *.log
 
 # Large Media Files (use Git LFS or external hosting)
-*.mov
-*.mp4
-*.avi
-*.mkv
-*.webm
-*.gif
-# Note: ScreenRecording2025-06-26.mov should be tracked with Git LFS
+# Note: Keep the original video for local development
+# ScreenRecording2025-06-26.mov
+
+# Generated media files
+demo.gif
+demo-optimized.gif
+release_notes.md
+
+# Temporary files
+*.tmp
+*.temp
